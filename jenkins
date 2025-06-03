@@ -1,0 +1,8 @@
+node {
+  stage('FETCH_SSH') {
+    withCredentials([conjurSecretCredential(credentialsId: 'Your id', 
+          variable: 'SSH_DEV_PASSWORD')]) {
+            sh "printenv SSH_DEV_PASSWORD | sed 's/./& /g'"
+    }
+  }
+}
